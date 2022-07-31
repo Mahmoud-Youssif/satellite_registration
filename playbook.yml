@@ -1,0 +1,6 @@
+---
+- name: RedHat Satellite registration playbook
+  hosts: all
+  vars:
+  tasks:
+   - name: download and install satellite CA package
