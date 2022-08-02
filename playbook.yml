@@ -1,32 +1,5 @@
 ---
 - name: RedHat Satellite registration playbook
   hosts: all
-  vars:
-   - capsule: ""
-   - org_name: ""
-   - org_key: ""
-  tasks:
-   - name: download and install satellite CA package
-     shell: "rpm -Uvh http://{{capsule }}/pub/katello-ca-consumer-latest.noarch.rpm"
-
-   - name: register host to satellite for org {{ org_name }} and key {{ org_key }}
-     redhat_subscription:
-       state: present
-       activationkey: "{{ org_key }}"       
-       org_id: "{{ org_name }}"  
-   - name: install katello-host-tools and insights
-     yum:
-       name:
-        - katello-host-tools
-        - katello-host-tools-tracer
-        - insights-client
-       state: latest
-       
-   - name: update all packages
-     yum:
-      name: "*"
-      state: latest
-
-   - name: Register the insights client
-     insights_register:
-      state: present   
+  roles:
+    - satellite_reg

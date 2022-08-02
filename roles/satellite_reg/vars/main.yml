@@ -1,0 +1,5 @@
+---
+# vars file for satellite_reg
+capsule: ""
+org_name: ""
+org_key: ""
